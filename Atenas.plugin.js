@@ -1,6 +1,6 @@
 /**
  * @name Atenas
- * @version 1.0.1
+ * @version 1.0.2.1
  * @author SayBored
  * @authorId 349641851122221058 
  * @description Various discord fixes and addons.
