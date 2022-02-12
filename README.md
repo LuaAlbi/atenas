@@ -1,6 +1,6 @@
 # <div align="center">atenas 1.0.1</div>
 
-<div align="center">discord bug fixes and addons</div>
+<div align="center">discord bug fixes and message encrypt</div>
 
 <div align="center">
   
