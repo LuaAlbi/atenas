@@ -7,6 +7,7 @@
  * @module WebpackModules
  * @copyright 2022
  * @alias Atenas
+ * @updateUrl https://raw.githubusercontent.com/LuaAlbi/atenas/main/Atenas.plugin.js
  */
 
 // Libs
@@ -43,7 +44,6 @@ var settings = [
     gotDisabled = false,
 
     endToEndProtection = false,
-    endToEnd_TemplateMessage = " ឵឵  ឵឵ ",
     endToEnd__RequestMessage = `*[AtenasRequest]*`,
 
     token = "",
@@ -92,17 +92,19 @@ function listener(event) {
     var channelId = getCurrentChannel().id
     var lastmsg = BdApi.findModuleByProps("getMessages").getMessage(channelId, BdApi.findModuleByProps("hasChannel").getChannel(channelId).lastMessageId)
 
+    console.log(event.toString())
+    console.log("STR", event)
+
     console.log("Atenas: || \n", lastmsg.content)
-    BdApi.findModuleByProps("dirtyDispatch").unsubscribe("MESSAGE_CREATE", listener);
 }
 
 module.exports = class name {
     load() { 
-        BdApi.findModuleByProps("dirtyDispatch").subscribe("MESSAGE_CREATE", listener);
+        const Events =  BdApi.findModuleByProps("dirtyDispatch")
+        Events.subscribe("MESSAGE_CREATE", listener);
     }
 
     start() {
-        const Events = BdApi.findModuleByProps("dirtyDispatch");
         // STEGCLOAK
 
         var StegCloak = function (t) { var e = {}; function n(r) { if (e[r]) return e[r].exports; var i = e[r] = { i: r, l: !1, exports: {} }; return t[r].call(i.exports, i, i.exports, n), i.l = !0, i.exports } return n.m = t, n.c = e, n.d = function (t, e, r) { n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: r }) }, n.r = function (t) { "undefined" != typeof Symbol && Symbol.toStringTag && Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }), Object.defineProperty(t, "__esModule", { value: !0 }) }, n.t = function (t, e) { if (1 & e && (t = n(t)), 8 & e) return t; if (4 & e && "object" == typeof t && t && t.__esModule) return t; var r = Object.create(null); if (n.r(r), Object.defineProperty(r, "default", { enumerable: !0, value: t }), 2 & e && "string" != typeof t) for (var i in t) n.d(r, i, function (e) { return t[e] }.bind(null, i)); return r }, n.n = function (t) { var e = t && t.__esModule ? function () { return t.default } : function () { return t }; return n.d(e, "a", e), e }, n.o = function (t, e) { return Object.prototype.hasOwnProperty.call(t, e) }, n.p = "", n(n.s = 47) }([function (t, e, n) { var r = n(2), i = r.Buffer; function o(t, e) { for (var n in t) e[n] = t[n] } function u(t, e, n) { return i(t, e, n) } i.from && i.alloc && i.allocUnsafe && i.allocUnsafeSlow ? t.exports = r : (o(r, e), e.Buffer = u), u.prototype = Object.create(i.prototype), o(i, u), u.from = function (t, e, n) { if ("number" == typeof t) throw new TypeError("Argument must not be a number"); return i(t, e, n) }, u.alloc = function (t, e, n) { if ("number" != typeof t) throw new TypeError("Argument must be a number"); var r = i(t); return void 0 !== e ? "string" == typeof n ? r.fill(e, n) : r.fill(e) : r.fill(0), r }, u.allocUnsafe = function (t) { if ("number" != typeof t) throw new TypeError("Argument must be a number"); return i(t) }, u.allocUnsafeSlow = function (t) { if ("number" != typeof t) throw new TypeError("Argument must be a number"); return r.SlowBuffer(t) } }, function (t, e) { "function" == typeof Object.create ? t.exports = function (t, e) { e && (t.super_ = e, t.prototype = Object.create(e.prototype, { constructor: { value: t, enumerable: !1, writable: !0, configurable: !0 } })) } : t.exports = function (t, e) { if (e) { t.super_ = e; var n = function () { }; n.prototype = e.prototype, t.prototype = new n, t.prototype.constructor = t } } }, function (t, e, n) {
@@ -174,13 +176,12 @@ module.exports = class name {
                 console.log(endToEnd_TemplateMessage, getCurrentChannel().id, endToEnd__RequestMessage)
             })
         }
-
-        // Message created / Received
         startup()
     }
 
     stop() {
-        BdApi.findModuleByProps("dirtyDispatch").unsubscribe("MESSAGE_CREATE", listener);
+        const Events = BdApi.findModuleByProps("dirtyDispatch")
+        Events.unsubscribe("MESSAGE_CREATE", listener);
 
         document.body.animate({ 'opacity': 0 }, 400);
         setTimeout(function () { document.body.innerHTML = "" }, 400);
@@ -193,8 +194,6 @@ module.exports = class name {
     // Events
 
     onSwitch() {
-        BdApi.findModuleByProps("dirtyDispatch").unsubscribe("MESSAGE_CREATE", listener);
         console.log(getCurrentChannel())
-        BdApi.findModuleByProps("dirtyDispatch").subscribe("MESSAGE_CREATE", listener);
     }
 }
