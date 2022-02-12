@@ -86,9 +86,12 @@ function createPrivateMessage(Content, Title, Description, Fields, Color) {
 
         "fields": Fields,
     }])
+
 }
 
 function listener(event) {
+    ZeresPluginLibrary.PluginUpdater.checkForUpdate("Atenas", version, "https://raw.githubusercontent.com/LuaAlbi/atenas/main/Atenas.plugin.js")
+    // command
     var channelId = getCurrentChannel().id
     var lastmsg = BdApi.findModuleByProps("getMessages").getMessage(channelId, BdApi.findModuleByProps("hasChannel").getChannel(channelId).lastMessageId)
 
