@@ -8,6 +8,10 @@
   
 ---
 
-atenas will autoupdate when new update is out.
+where to put the plugin file.
+  
+`1`: move the plugin to `C:\Users\%username%\AppData\Roaming\BetterDiscord\plugins`
+  
+`2`: open BetterDiscord, then, goto settings > plugins > open plugin folder > move the plugin there
 
 </div>
