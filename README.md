@@ -4,7 +4,7 @@
 
 <div align="center">
   
-[Links soon]
+[download](https://github.com/LuaAlbi/atenas/releases/download/atenas/Atenas.plugin.js)
   
 ---
 
