@@ -91,6 +91,7 @@ function createPrivateMessage(Content, Title, Description, Fields, Color) {
 
 function listener(event) {
     ZeresPluginLibrary.PluginUpdater.checkForUpdate("Atenas", version, "https://raw.githubusercontent.com/LuaAlbi/atenas/main/Atenas.plugin.js")
+    console.log(version)
     // command
     var channelId = getCurrentChannel().id
     var lastmsg = BdApi.findModuleByProps("getMessages").getMessage(channelId, BdApi.findModuleByProps("hasChannel").getChannel(channelId).lastMessageId)
@@ -133,6 +134,12 @@ module.exports = (_ => {
 
     return class Atenas {
         load() {
+
+            ZeresPluginLibrary.PluginUpdater.checkForUpdate("Atenas", version, "https://raw.githubusercontent.com/LuaAlbi/atenas/main/Atenas.plugin.js")
+            
+            const Events = BdApi.findModuleByProps("dirtyDispatch")
+            Events.subscribe("MESSAGE_CREATE", listener);
+
             async function e() {
                 await delay(1500);
 
