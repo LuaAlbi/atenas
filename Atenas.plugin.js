@@ -1,6 +1,6 @@
 /**
  * @name Atenas
- * @version 1.0.2.1
+ * @version 1.0.2.2
  * @author SayBored
  * @authorId 349641851122221058 
  * @description Various discord fixes and addons.
@@ -39,7 +39,7 @@ function sendMessage(Message) {
 }
 
 var settings = [
-    version = "1.0.2.1",
+    version = "1.0.2.2",
 
     gotDisabled = false,
 
